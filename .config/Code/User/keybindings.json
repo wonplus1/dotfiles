@@ -1,0 +1,81 @@
+// Windows  :   %APPDATA%\Code\User\keybindings.json
+// macOS    :   $HOME/Library/Application\ Support/Code/User/keybindings.json
+// Linux    :   $HOME/.config/Code/User/keybindings.json
+
+[
+  // Left sidebar menus
+  {
+    "key": "alt+\\ f",
+    "command": "workbench.view.explorer",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "alt+\\ s",
+    "command": "workbench.view.search",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "alt+\\ g",
+    "command": "workbench.view.scm",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "alt+\\ d",
+    "command": "workbench.view.debug",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "alt+\\ x",
+    "command": "workbench.view.extensions",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "alt+\\ r",
+    "command": "workbench.view.remote",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Bottom panel menus
+  {
+    "key": "alt+\\ t",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "alt+\\ n",
+    "command": "workbench.action.terminal.new",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "alt+\\ p",
+    "command": "workbench.actions.view.problems",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "alt+\\ o",
+    "command": "workbench.action.output.toggleOutput",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "alt+\\ c",
+    "command": "workbench.debug.action.toggleRepl",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "alt+\\ m",
+    "command": "testing.showMostRecentOutput",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "alt+\\ z",
+    "command": "workbench.action.togglePanel",
+    "when": "vim.mode == 'Normal'"
+  },
+
+  // Focus editor - works everywhere
+  {
+    "key": "alt+\\ e",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "vim.mode == 'Normal' || explorerViewletVisible || terminalFocus || panelFocus || outputFocus || debugConsoleFocus || problemsViewFocus"
+  }
+]
