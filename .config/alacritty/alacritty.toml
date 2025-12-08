@@ -1,0 +1,54 @@
+# ~/.config/alacritty/alacritty.toml
+# ----------------------------------------------------------
+
+[colors]
+# monokai {{{
+[colors.primary]
+background = "#272822"
+foreground = "#f8f8f2"
+
+[colors.normal]
+black = "#272822"
+red = "#f92672"
+green = "#a6e22e"
+yellow = "#f4bf75"
+blue = "#66d9ef"
+magenta = "#ae81ff"
+cyan = "#a1efe4"
+white = "#f8f8f2"
+
+[colors.bright]
+black = "#75715e"
+red = "#f92672"
+green = "#a6e22e"
+yellow = "#f4bf75"
+blue = "#66d9ef"
+magenta = "#ae81ff"
+cyan = "#a1efe4"
+white = "#f9f8f5"
+# }}}
+
+[font]
+size = 13.0
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+# size = 15.0
+# normal = { family = "D2CodingLigature Nerd Font", style = "Regular" }
+
+[scrolling]
+history = 10000
+multiplier = 5
+
+[window]
+decorations = "None"  # "Full" | "None"
+startup_mode = "Maximized"  # "Windowed" | "Maximized" | "Fullscreen" | "SimpleFullscreen"(macOS only)
+
+[general]
+# # git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+# import = [
+# "~/.config/alacritty/themes/themes/papertheme.toml"
+# "~/.config/alacritty/themes/themes/github_dark_default.toml"
+# "~/.config/alacritty/themes/themes/github_dark.toml"
+# "~/.config/alacritty/themes/themes/monokai_pro.toml"
+# "~/.config/alacritty/themes/themes/monokai.toml"
+# ]
+# level = "Normal"  # "Normal" | "AlwaysOnTop"

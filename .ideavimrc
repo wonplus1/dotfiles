@@ -1,0 +1,93 @@
+" List of Supported Options
+set clipboard=ideaput " unnamedplus
+set hlsearch
+set ignorecase
+set incsearch
+set showmode
+set smartcase
+set smartindent
+set virtualedit=onemore
+set visualbell
+set wrapscan
+
+" IdeaVim options mapped to IntelliJ-based IDE settings
+set scrolloff=5
+set sidescrolloff=5
+
+" IdeaVim options for IntelliJ-based IDE features
+set cursorline
+set fileencoding=utf-8
+set fileformat=unix
+set list
+set number
+set textwidth=0
+set wrap
+
+" IdeaVim Plugins
+set matchit
+set NERDTree " https://github.com/JetBrains/ideavim/wiki/NERDTree-support
+set surround
+
+" Key Mappings
+let mapleader = '\'
+
+inoremap jk <ESC>
+nnoremap , :
+vnoremap , :
+
+nnoremap <leader>y maggVG"+y`a
+nnoremap <leader>= <Action>(ReformatCode)
+nnoremap <S-u> <C-r>
+nnoremap <leader>/ :noh<CR>
+nnoremap <leader>v <C-v>
+nnoremap [b :bprevious<CR>
+nnoremap ]b :bnext<CR>
+nnoremap [t :tabprevious<CR>
+nnoremap ]t :tabnext<CR>
+
+nnoremap <leader>w <C-w>
+nnoremap <leader>1 <C-w>h
+nnoremap <leader>2 <C-w>j
+nnoremap <leader>3 <C-w>k
+nnoremap <leader>4 <C-w>l
+
+nnoremap <leader>] <C-]>
+nnoremap <leader>t <C-t>
+
+xnoremap <expr> p 'pgv"'.v:register.'y`>'
+
+" nnoremap d "_d
+" vnoremap d "_d
+nnoremap D "_D
+vnoremap D "_D
+
+nnoremap c "_c
+vnoremap c "_c
+nnoremap C "_C
+vnoremap C "_C
+
+nnoremap x "_x
+vnoremap x "_x
+nnoremap X "_X
+vnoremap X "_X
+
+nnoremap s "_s
+vnoremap s "_s
+nnoremap S "_S
+vnoremap S "_S
+
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap gD gDzz
+nnoremap G Gzz
+
+nnoremap <leader>r :set relativenumber!<CR>
+
+nnoremap gcc <Action>(CommentByLineComment)
+vnoremap gc <Action>(CommentByLineComment)<ESC>
+vnoremap gbc <Action>(CommentByBlockComment)<ESC>
+
+nnoremap <leader>ef :NERDTreeToggle<CR>
+nnoremap <leader>ec :NERDTreeFind<CR>

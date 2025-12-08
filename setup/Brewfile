@@ -1,0 +1,42 @@
+# brew bundle --file=~/.dotfiles/Brewfile
+tap "homebrew/cask-fonts"
+
+# Utilities
+brew "bash"
+brew "coreutils"
+brew "curl"
+brew "entr"
+brew "fd"
+brew "ffmpeg"
+brew "git"
+brew "htop"
+brew "jq"
+brew "llvm"
+brew "nvm"
+brew "pipx"
+brew "pre-commit"
+brew "python"
+brew "ripgrep"
+brew "ruff"
+brew "sevenzip"
+brew "tmux"
+brew "tree"
+brew "universal-ctags"
+brew "unzip"
+brew "vim"
+brew "wget"
+brew "zip"
+brew "zsh"
+brew "zsh-autosuggestions"
+brew "zsh-completions"
+brew "zsh-syntax-highlighting"
+
+# Casks (GUI Apps)
+cask "alacritty"
+cask "docker"
+cask "google-chrome"
+cask "iina"
+cask "visual-studio-code"
+
+# Casks (Fonts)
+cask "font-jetbrains-mono-nerd-font"
