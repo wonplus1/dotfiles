@@ -1,0 +1,194 @@
+{
+  // ==================================================================
+  // [참고] VS Code settings.json 기본 경로 (Default File Paths)
+  //
+  // Windows: %APPDATA%\Roaming\Code\User\settings.json
+  // macOS:   $HOME/Library/Application Support/Code/User/settings.json
+  // Linux:   $HOME/.config/Code/User/settings.json
+  // ==================================================================
+
+  // ==================================================================
+  // 1. 사용자 맞춤 설정 (User Preferences)
+  // ==================================================================
+  "workbench.colorTheme": "Default Light Modern",
+  "editor.fontSize": 16,
+  "editor.formatOnSave": false,
+
+  // ==================================================================
+  // 2. 에디터 기본 설정 (Editor Basics)
+  // ==================================================================
+  "editor.tabSize": 2,                   // 탭 크기 2
+  "editor.insertSpaces": true,           // 탭을 공백으로 변환
+  "editor.lineNumbers": "on",            // 라인 번호 표시
+  "editor.rulers": [80],                 // 80자 가이드라인 표시
+  "editor.renderWhitespace": "trailing", // 공백 문자 표시 방식
+  "editor.cursorBlinking": "solid",      // 커서 깜빡임 없음
+  "editor.cursorStyle": "block",         // 커서 모양: 라인
+  "editor.wordWrap": "off",              // 자동 줄바꿈 켜기
+  "files.encoding": "utf8",              // 파일 인코딩 UTF-8
+  "files.trimTrailingWhitespace": true,  // 저장 시 줄 끝 공백 제거
+
+  // ==================================================================
+  // 3. Vim 플러그인 설정 (Vim Settings)
+  // ==================================================================
+  "vim.leader": "\\",                 // Leader 키 설정 (\)
+  "vim.useSystemClipboard": true,     // 시스템 클립보드 공유
+  "vim.hlsearch": true,               // 검색어 강조
+  "vim.smartcase": true,              // 대소문자 스마트 검색
+  "vim.ignorecase": true,             // 대소문자 무시
+  "vim.splitBelow": true,             // 창 분할 시 아래로
+  "vim.splitRight": true,             // 창 분할 시 오른쪽으로
+  "vim.visualstar": true,             // Visual 모드에서 * 검색 지원
+
+  // ==================================================================
+  // 4. 키 매핑 (Key Mappings)
+  // ==================================================================
+
+  // ------------------------------------------------------------------
+  // [Insert Mode] 입력 모드
+  // ------------------------------------------------------------------
+  "vim.insertModeKeyBindings": [
+    // jk 입력 시 ESC (Normal 모드로 전환)
+    { "before": ["j", "k"], "after": ["<Esc>"] },
+
+    // <leader>2 입력 시 자동완성 창 호출
+    { "before": ["<leader>", "2"], "commands": ["editor.action.triggerSuggest"] }
+  ],
+
+  // ------------------------------------------------------------------
+  // [Normal Mode] 일반 모드
+  // ------------------------------------------------------------------
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // --- 주석 기능 (Commentary) ---
+    // gcc: 현재 줄 주석 토글
+    { "before": ["g", "c", "c"], "commands": ["editor.action.commentLine"] },
+
+    // --- 기본 키 리매핑 ---
+    // 콤마(,)를 콜론(:)으로 변경
+    { "before": [","], "after": [":"] },
+    // Q 키 비활성화
+    { "before": ["Q"], "after": ["<Nop>"] },
+    // Shift+u를 Redo(다시 실행)로 매핑
+    { "before": ["<S-u>"], "after": ["<C-r>"] },
+    // <leader>/ : 검색 하이라이트 끄기
+    { "before": ["<leader>", "/"], "commands": [":nohl"] },
+    // <leader>r : 라인 번호(상대/절대) 토글
+    { "before": ["<leader>", "r"], "commands": ["editor.action.toggleLineNumbers"] },
+
+    // --- 이동 보정 (Movements) ---
+    // 긴 줄에서 보이는 줄 단위로 이동 (gj, gk)
+    { "before": ["j"], "after": ["g", "j"] },
+    { "before": ["k"], "after": ["g", "k"] },
+    { "before": ["0"], "after": ["g", "0"] },
+    { "before": ["^"], "after": ["g", "^"] },
+    { "before": ["$"], "after": ["g", "$"] },
+
+    // --- 검색 후 중앙 정렬 (Center Screen) ---
+    // n, N, *, #, gD, G 사용 시 화면 중앙으로 정렬 (zz)
+    { "before": ["n"], "after": ["n", "z", "z"] },
+    { "before": ["N"], "after": ["N", "z", "z"] },
+    { "before": ["*"], "after": ["*", "z", "z"] },
+    { "before": ["#"], "after": ["#", "z", "z"] },
+    { "before": ["g", "D"], "after": ["g", "D", "z", "z"] },
+    { "before": ["G"], "after": ["G", "z", "z"] },
+
+    // --- 파일 및 탭 이동 (Navigation) ---
+    // [b, ]b : 이전/다음 파일 탭 이동
+    { "before": ["[", "b"], "commands": ["workbench.action.previousEditor"] },
+    { "before": ["]", "b"], "commands": ["workbench.action.nextEditor"] },
+    // [t, ]t : 탭 그룹 내 이동
+    { "before": ["[", "t"], "commands": ["workbench.action.previousEditorInGroup"] },
+    { "before": ["]", "t"], "commands": ["workbench.action.nextEditorInGroup"] },
+    // <leader>wd : 열린 모든 파일 목록 보기
+    { "before": ["<leader>", "w", "d"], "commands": ["workbench.action.showAllEditors"] },
+
+    // --- 창(Window) 관리 ---
+    // <leader>w : 창 분할 기본 키 (<C-w>)
+    { "before": ["<leader>", "w"], "after": ["<C-w>"] },
+
+    // <leader>1~4 : 창 포커스 이동 (좌, 하, 상, 우)
+    { "before": ["<leader>", "1"], "commands": ["workbench.action.navigateLeft"] },
+    { "before": ["<leader>", "2"], "commands": ["workbench.action.navigateDown"] },
+    { "before": ["<leader>", "3"], "commands": ["workbench.action.navigateUp"] },
+    { "before": ["<leader>", "4"], "commands": ["workbench.action.navigateRight"] },
+
+    // <leader>5~8 : 창 자체를 이동 (좌, 하, 상, 우로 보내기)
+    { "before": ["<leader>", "5"], "commands": ["workbench.action.moveEditorToLeftGroup"] },
+    { "before": ["<leader>", "6"], "commands": ["workbench.action.moveEditorToBelowGroup"] },
+    { "before": ["<leader>", "7"], "commands": ["workbench.action.moveEditorToAboveGroup"] },
+    { "before": ["<leader>", "8"], "commands": ["workbench.action.moveEditorToRightGroup"] },
+
+    // <leader><leader>1~4 : 창 크기 조절
+    { "before": ["<leader>", "<leader>", "1"], "commands": ["workbench.action.decreaseViewWidth"] },
+    { "before": ["<leader>", "<leader>", "2"], "commands": ["workbench.action.decreaseViewHeight"] },
+    { "before": ["<leader>", "<leader>", "3"], "commands": ["workbench.action.increaseViewHeight"] },
+    { "before": ["<leader>", "<leader>", "4"], "commands": ["workbench.action.increaseViewWidth"] },
+
+    // --- 에러 및 문제점 이동 (Diagnostics) ---
+    // [q, ]q, [l, ]l : 이전/다음 문제로 이동
+    { "before": ["[", "q"], "commands": ["editor.action.marker.prev"] },
+    { "before": ["]", "q"], "commands": ["editor.action.marker.next"] },
+    { "before": ["[", "l"], "commands": ["editor.action.marker.prev"] },
+    { "before": ["]", "l"], "commands": ["editor.action.marker.next"] },
+
+    // <leader>qo, qc : 문제(Problems) 패널 열기/닫기
+    { "before": ["<leader>", "q", "o"], "commands": ["workbench.actions.view.problems"] },
+    { "before": ["<leader>", "q", "c"], "commands": ["workbench.action.closePanel"] },
+    { "before": ["<leader>", "q", "f"], "commands": ["workbench.actions.view.problems"] },
+    { "before": ["<leader>", "l", "o"], "commands": ["workbench.actions.view.problems"] },
+    { "before": ["<leader>", "l", "c"], "commands": ["workbench.action.closePanel"] },
+    { "before": ["<leader>", "l", "l"], "commands": ["workbench.actions.view.problems"] },
+
+    // --- 정의 이동 (Definition) ---
+    // <leader>] : 정의로 이동
+    { "before": ["<leader>", "]"], "commands": ["editor.action.revealDefinition"] },
+    // <leader>t : 뒤로 가기 (이전 위치로 복귀)
+    { "before": ["<leader>", "t"], "commands": ["workbench.action.navigateBack"] },
+
+    // --- 기타 유틸리티 ---
+    // <leader>y : 전체 선택 후 시스템 클립보드 복사
+    { "before": ["<leader>", "y"], "commands": ["editor.action.selectAll", "editor.action.clipboardCopyAction", "cursorUndo"] },
+    // <leader>= : 문서 전체 포맷팅(정렬)
+    { "before": ["<leader>", "="], "commands": ["editor.action.formatDocument"] },
+    // <leader>v : 블록 비주얼 모드 (Visual Block)
+    { "before": ["<leader>", "v"], "after": ["<C-v>"] },
+    // <leader>s : 찾기 및 바꾸기 (Replace)
+    { "before": ["<leader>", "s"], "commands": ["editor.action.startFindReplaceAction"] },
+
+    // --- 블랙홀 레지스터 (삭제 시 클립보드 오염 방지) ---
+    // 잘라내기 없이 삭제만 수행 ("_ 레지스터 사용)
+    { "before": ["D"], "after": ["\"", "_", "D"] },
+    { "before": ["c"], "after": ["\"", "_", "c"] },
+    { "before": ["C"], "after": ["\"", "_", "C"] },
+    { "before": ["x"], "after": ["\"", "_", "x"] },
+    { "before": ["X"], "after": ["\"", "_", "X"] },
+    { "before": ["s"], "after": ["\"", "_", "s"] },
+    { "before": ["S"], "after": ["\"", "_", "S"] }
+  ],
+
+  // ------------------------------------------------------------------
+  // [Visual Mode] 비주얼 모드
+  // ------------------------------------------------------------------
+  "vim.visualModeKeyBindingsNonRecursive": [
+    // gc : 선택 영역 주석 토글
+    { "before": ["g", "c"], "commands": ["editor.action.commentLine"] },
+
+    // 콤마(,)를 콜론(:)으로 변경
+    { "before": [","], "after": [":"] },
+
+    // p : 붙여넣기 시 기존 클립보드 내용 유지 (덮어쓰기 방지)
+    { "before": ["p"], "after": ["\"", "_", "d", "P"] },
+
+    // <leader>s : 선택 영역 찾기 및 바꾸기
+    { "before": ["<leader>", "s"], "commands": ["editor.action.startFindReplaceAction"] },
+
+    // --- 블랙홀 레지스터 (삭제만 수행) ---
+    { "before": ["D"], "after": ["\"", "_", "D"] },
+    { "before": ["c"], "after": ["\"", "_", "c"] },
+    { "before": ["C"], "after": ["\"", "_", "C"] },
+    { "before": ["x"], "after": ["\"", "_", "x"] },
+    { "before": ["X"], "after": ["\"", "_", "X"] },
+    { "before": ["s"], "after": ["\"", "_", "s"] },
+    { "before": ["S"], "after": ["\"", "_", "S"] }
+  ]
+}
