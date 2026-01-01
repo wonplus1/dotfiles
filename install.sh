@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+
+show_script_info() {
+  echo "basename: $(basename "$0")"
+  echo "dirname : $(dirname "$0")"
+  echo "pwd     : $(pwd)"
+  echo ""
+}
+
+cd_to_script_dir() {
+  script_dir="$(cd "$(dirname "$0")" && pwd)"
+  cd "${script_dir}" || exit 1
+}
+
+detect_os() {
+  os_type="$(uname)"
+  if [ "${os_type}" = "Linux" ]; then
+    if grep -qiE "microsoft|wsl" /proc/version; then
+      os_type="WSL"
+    fi
+  fi
+}
+
+run_setup() {
+  setup_dotfiles_script=""
+  setup_packages_script=""
+
+  case "${os_type}" in
+  Linux | WSL)
+    setup_dotfiles_script="setup_dotfiles.sh"
+
+    if [ -f /etc/os-release ] && grep -qi '^ID=ubuntu' /etc/os-release; then
+      setup_packages_script="setup_packages.sh"
+    else
+      echo "Detected unsupported Linux distribution."
+    fi
+    ;;
+  Darwin)
+    setup_dotfiles_script="setup_dotfiles.sh"
+    ;;
+  *)
+    echo "Error: Unsupported operating system: ${os_type}"
+    exit 1
+    ;;
+  esac
+
+  if [ -n "${setup_dotfiles_script}" ]; then
+    if [ -f "${script_dir}/setup/${setup_dotfiles_script}" ]; then
+      echo "Running setup script for ${os_type}: ${setup_dotfiles_script}"
+      bash "${script_dir}/setup/${setup_dotfiles_script}"
+    else
+      echo "Error: Setup script not found for ${os_type} (${setup_dotfiles_script}) in ${script_dir}"
+      exit 1
+    fi
+  else
+    echo "No dotfiles setup script defined for ${os_type}. Skipping."
+  fi
+
+  if [ -n "${setup_packages_script}" ]; then
+    if [ -f "${script_dir}/setup/${setup_packages_script}" ]; then
+      echo "Running setup script for ${os_type}: ${setup_packages_script}"
+      bash "${script_dir}/setup/${setup_packages_script}"
+    else
+      echo "Error: Setup script not found for ${os_type} (${setup_packages_script}) in ${script_dir}"
+      exit 1
+    fi
+  else
+    echo "No package setup script defined for ${os_type}. Skipping."
+  fi
+}
+
+main() {
+  show_script_info
+  cd_to_script_dir
+  detect_os
+  run_setup
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  main "$@"
+fi
