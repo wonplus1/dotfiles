@@ -1,0 +1,83 @@
+" =================================
+" Windows: %userprofile%\.ideavimrc
+" macOS:   ~/.ideavimrc
+" Linux:   ~/.ideavimrc
+" =================================
+
+let mapleader = "\"
+
+set scrolloff=5
+set incsearch
+set hlsearch
+set smartcase
+set ignorecase
+set visualbell
+set clipboard+=unnamedplus,ideaput
+
+set commentary
+set matchit
+
+inoremap jk <Esc>
+noremap , :
+vnoremap , :
+
+nnoremap j gj
+nnoremap k gk
+nnoremap 0 g0
+nnoremap ^ g^
+nnoremap $ g$
+
+nnoremap <leader>/ :nohlsearch<CR>
+
+xnoremap p "_dP
+
+nnoremap c "_c
+vnoremap c "_c
+nnoremap C "_C
+vnoremap C "_C
+nnoremap x "_x
+vnoremap x "_x
+nnoremap X "_X
+vnoremap X "_X
+nnoremap s "_s
+vnoremap s "_s
+nnoremap S "_S
+vnoremap S "_S
+
+nnoremap <leader>y ggVG"+y
+nnoremap <S-u> <C-r>
+
+nmap <leader>= <Action>(ReformatCode)
+
+nmap [b <Action>(PreviousTab)
+nmap ]b <Action>(NextTab)
+nmap [t <Action>(PreviousTab)
+nmap ]t <Action>(NextTab)
+nmap <leader>wd <Action>(RecentFiles)
+
+nmap <leader>w <C-w>
+nmap <leader>1 <C-w>h
+nmap <leader>2 <C-w>j
+nmap <leader>3 <C-w>k
+nmap <leader>4 <C-w>l
+
+nmap <leader>] <Action>(GotoDeclaration)
+nmap <leader>t <Action>(Back)
+nmap gd <Action>(GotoDeclaration)
+nmap gi <Action>(GotoImplementation)
+
+nmap [q <Action>(GotoPreviousError)
+nmap ]q <Action>(GotoNextError)
+
+nmap <leader>qf <Action>(ActivateProblemsViewToolWindow)
+
+nmap <leader>rn <Action>(RenameElement)
+nmap K <Action>(ShowHoverInfo)
+
+nmap <leader>x <Action>(Run)
+nmap <leader>r <Action>(EditorToggleShowLineNumbers)
+
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
