@@ -1,0 +1,129 @@
+" =================================
+" Windows: %userprofile%\.ideavimrc
+" macOS:   ~/.ideavimrc
+" Linux:   ~/.ideavimrc
+" =================================
+
+"" ---------------------------------------------------------
+"" 1. Options
+"" ---------------------------------------------------------
+let mapleader = "\\"
+
+set clipboard+=unnamed
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+set wrapscan
+set scrolloff=5
+set sidescrolloff=5
+set number
+set relativenumber
+
+set noerrorbells
+set novisualbell
+
+set ideajoin
+set idearefactormode=keep
+set ideaput
+
+"" ---------------------------------------------------------
+"" 2. Plugins Emulation
+"" ---------------------------------------------------------
+set surround
+set commentary
+set highlightedyank
+set multiple-cursors " <A-n>
+
+"" ---------------------------------------------------------
+"" 3. Key Mappings
+"" ---------------------------------------------------------
+
+inoremap jk <Esc>
+noremap , :
+noremap <S-u> <C-r>
+
+noremap j gj
+noremap k gk
+noremap 0 g0
+noremap ^ g^
+noremap $ g$
+
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap gD gDzz
+nnoremap G Gzz
+
+nnoremap <Esc> :nohlsearch<CR>
+
+vnoremap < <gv
+vnoremap > >gv
+
+noremap c "_c
+noremap C "_C
+noremap x "_x
+noremap X "_X
+noremap s "_s
+noremap S "_S
+
+xnoremap p "_dP
+
+noremap <leader>w <C-w>
+
+noremap <leader>1 <C-w>h
+noremap <leader>2 <C-w>j
+noremap <leader>3 <C-w>k
+noremap <leader>4 <C-w>l
+
+nnoremap <leader>5 <C-w>H
+nnoremap <leader>6 <C-w>J
+nnoremap <leader>7 <C-w>K
+nnoremap <leader>8 <C-w>L
+
+nnoremap <leader><leader>1 :vertical resize -20<CR>
+nnoremap <leader><leader>2 :resize -20<CR>
+nnoremap <leader><leader>3 :resize +20<CR>
+nnoremap <leader><leader>4 :vertical resize +20<CR>
+
+noremap [b :action PreviousEditorTab<CR>
+noremap ]b :action NextEditorTab<CR>
+noremap [t :action PreviousEditorTab<CR>
+noremap ]t :action NextEditorTab<CR>
+
+"" ---------------------------------------------------------
+"" 4. LSP & Features
+"" ---------------------------------------------------------
+
+nmap gd :action GotoDeclaration<CR>
+nmap gD :action GotoImplementation<CR>
+nmap gr :action FindUsages<CR>
+nmap K :action QuickJavaDoc<CR>
+nmap <C-k> :action ParameterInfo<CR>
+
+nmap <leader>cr :action RenameElement<CR>
+nmap <leader>cf :action ReformatCode<CR>
+nmap <leader>ca :action ShowIntentionActions<CR>
+nmap <leader>cd :action ShowErrorDescription<CR>
+
+nmap <leader><space> :action SearchEverywhere<CR>
+nmap <leader>ff :action GotoFile<CR>
+nmap <leader>e :action SelectInProjectView<CR>
+nmap <leader>/ :action FindInPath<CR>
+nmap <leader>, :action RecentFiles<CR>
+
+nmap <leader>rr :action Run<CR>
+
+
+"" ---------------------------------------------------------
+nmap <leader>] <Action>(GotoDeclaration)
+nmap <leader>t <Action>(Back)
+
+nmap [q <Action>(GotoPreviousError)
+nmap ]q <Action>(GotoNextError)
+
+nmap <leader>qf <Action>(ActivateProblemsViewToolWindow)
+nmap K <Action>(ShowHoverInfo)
+
+nnoremap <leader>y ggVG"+y
